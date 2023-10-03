@@ -4,13 +4,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def store_in_spreadsheet(data):
     # クレデンシャルのセットアップ
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/spreadsheets',
-             'https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive']
+    scope = ['https://www.googleapis.com/auth/spreadsheets']
     creds = ServiceAccountCredentials.from_json_keyfile_name('path_to_credentials.json', scope)
     client = gspread.authorize(creds)
 
     # スプレッドシートを開く
-    sheet = client.open("your_spreadsheet_name").sheet1
+    sheet = client.open("1wGhuvB2Gs1btoq2DJlkdMlCixdvZdEazvYyOQm2T6EE").sheet1
 
     # 最後の行にデータを追加
     next_row = len(sheet.col_values(1)) + 1  # 1列目の長さを取得して次の行を決定
