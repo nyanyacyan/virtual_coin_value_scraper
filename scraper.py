@@ -1,15 +1,25 @@
-import requests
 from selenium import webdriver
 
 url = "https://stepn-market.guide/market/dashboard"
-scraparsite = requests.get(url)
 
-# 応答のステータスコードが200（成功）の場合、内容を表示
-if scraparsite.status_code == 200:
-    print(scraparsite.text)
-else:
-    print(f"Error {scraparsite.status_code}: Failed to fetch the webpage.")
+driver = webdriver.Chrome(executable_path=)
 
-sneaker_data = []
-gems_data = []
-scroll_data = []
+# URLを開く
+driver.get(url)
+
+# <b>タグのテキストを取得
+all_btag_list = [b_tag.text for b_tag in driver.find_elements_by_tag_name('b')]
+
+# 数字のみ、GMTは消去。
+def string_intcleaning(s):
+    cleaned = s.replace(" ","" ).replace("GMT", "")
+    return int(cleaned)
+
+# それぞれの範囲から抽出
+sneaker_data = [string_intcleaning(value) for value in all_btag_list[:4]]
+gems_data = [string_intcleaning(value) for value in all_btag_list[:4]]
+scroll_data = [string_intcleaning(value) for value in all_btag_list[:4]]
+
+print(sneaker_data)
+print(gems_data)
+print(scroll_data)
