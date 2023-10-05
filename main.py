@@ -1,3 +1,2 @@
-from selenium import webdriver
-
-driver = webdriver.Chrome('./chromedriver')
+import SpreadsheetAppender
+import scraper
