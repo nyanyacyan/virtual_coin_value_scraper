@@ -1,43 +1,47 @@
 from selenium import webdriver  # seleniumのバージョンを4.1にする
 from webdriver_manager.chrome import ChromeDriverManager  # Chromeのバージョンをオートで確認してくれてインストールしてくれる
+import re
+import pandas as pd
 
 url = "https://stepn-market.guide/market/dashboard"
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 
-
 # URLを開く
 driver.get(url)
 
+def clean_and_convert(item):
+    cleaned_item = re.sub(r'[^\d.]', '', item)
+    cleaned_item = cleaned_item.replace(',', '')
+    try:
+        return float(cleaned_item)
+    except ValueError:
+        print(f'{item}を変換できません')
+        return None
+
 # <b>タグのテキストを取得
 all_btag_list = [b_tag.text for b_tag in driver.find_elements_by_tag_name('b')]
-print(all_btag_list)
 
-# 数字のみ、GMTは消去。
-def string_intcleaning(s):
-    cleaned = s.replace(",", "").replace(" ", "").replace("GMT", "").replace("G", "").replace("M", "").replace("T", "")
+cleaned_list = [clean_and_convert(item) for item in all_btag_list]
+print(cleaned_list)
 
-    try:
-        # float()関数を使用して文字列を浮動小数点数に変換
-        float_value = float(cleaned)
-        # int()関数を使用して浮動小数点数を整数に変換（小数点以下を切り捨て）
-        return int(float_value)
-    except ValueError:
-        print(f"Error converting {cleaned} to int")
-        return None  # or some default value
+# # cleaned_listの内容をpandasデータフレームに変換
+# df = pd.DataFrame(cleaned_list, columns=['Value'])
 
+# # データフレームをExcelファイルとして保存
+# df.to_excel('cleaned_list.xlsx', index=False)
 
 # それぞれの範囲から抽出
-sneaker_data = [string_intcleaning(value) for value in all_btag_list[:15]]
-sneaker_count_data = [string_intcleaning(value) for value in all_btag_list[16:31]]
-gems_data = [string_intcleaning(value) for value in all_btag_list[32:77]]
-gems_count_data = [string_intcleaning(value) for value in all_btag_list[78:123]]
-scroll_data = [string_intcleaning(value) for value in all_btag_list[124]]        # 修正必要
-scroll_count_data = [string_intcleaning(value) for value in all_btag_list[125]]  # 修正必要
+sneaker_data = cleaned_list[:16]
+sneaker_count_data = cleaned_list[17:33]
+gems_data = cleaned_list[34:70]
+gems_count_data = cleaned_list[71:112]
+scroll_data = cleaned_list[113], cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121]
+scroll_count_data = cleaned_list[114], cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122]
 
-print(sneaker_data)
-print(sneaker_count_data)
-print(gems_data)
-print(gems_count_data)
-print(scroll_data)
-print(scroll_count_data)
+print (f'sneaker_data:{sneaker_data}')
+print (f'sneaker_count_data:{sneaker_count_data}')
+print (f'gems_data:{gems_data}')
+print (f'gems_count_data:{gems_count_data}')
+print (f'scroll_data:{scroll_data}')
+print (f'scroll_count_data:{scroll_count_data}')
