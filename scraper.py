@@ -1,8 +1,10 @@
-from selenium import webdriver
+from selenium import webdriver  # seleniumのバージョンを4.1にする
+from webdriver_manager.chrome import ChromeDriverManager  # Chromeのバージョンをオートで確認してくれてインストールしてくれる
 
 url = "https://stepn-market.guide/market/dashboard"
 
-driver = webdriver.Chrome(executable_path=)  # 修正必要
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+
 
 # URLを開く
 driver.get(url)
@@ -13,8 +15,17 @@ print(all_btag_list)
 
 # 数字のみ、GMTは消去。
 def string_intcleaning(s):
-    cleaned = s.replace(" ","" ).replace("GMT", "")
-    return int(cleaned)
+    cleaned = s.replace(",", "").replace(" ", "").replace("GMT", "").replace("G", "").replace("M", "").replace("T", "")
+
+    try:
+        # float()関数を使用して文字列を浮動小数点数に変換
+        float_value = float(cleaned)
+        # int()関数を使用して浮動小数点数を整数に変換（小数点以下を切り捨て）
+        return int(float_value)
+    except ValueError:
+        print(f"Error converting {cleaned} to int")
+        return None  # or some default value
+
 
 # それぞれの範囲から抽出
 sneaker_data = [string_intcleaning(value) for value in all_btag_list[:15]]
