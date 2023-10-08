@@ -3,10 +3,10 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import scraper
 
-def get_spreadsheet(data):
+def get_spreadsheet():
     # クレデンシャルのセットアップ
-    scope = ['https://www.googleapis.com/auth/spreadsheets']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('/Users/coinlocker/Desktop/virtual_coin_value_scraper/lively-paratext-401220-2654fb6e4f1e.json', scope)
+    scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name('/Users/coinlocker/Desktop/virtual_coin_value_scraper/gspread-401409-7403b643eb80.json', scope)
     client = gspread.authorize(creds)
     return client.open("1wGhuvB2Gs1btoq2DJlkdMlCixdvZdEazvYyOQm2T6EE")
 
