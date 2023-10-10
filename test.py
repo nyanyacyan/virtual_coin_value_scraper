@@ -30,9 +30,16 @@ Gems_count_data_with_date = [current_date] + scraper.Gems_count_data
 Scroll_data_with_date = [current_date] + scraper.Scroll_data
 Scroll_count_data_with_date = [current_date] + scraper.Scroll_count_data
 
-# U列は21列目
-# U列の最終行を見つける
-col_values = Sneaker_worksheet.col_values(21)  # 21はU列
-last_row = len(col_values)
+print(type(Sneaker_data_with_date))
+print(Sneaker_data_with_date)
 
-Sneaker_worksheet.update_cell(last_row + 1, 21, scraper.Sneaker_rainbow_data)
+
+Sneaker_column_data = Sneaker_worksheet.col_values(23)  # W列の最終行を見つける
+
+last_row = len(Sneaker_column_data)
+
+
+range_notation = f'W{last_row + 1}'  # 空白のセルにデータを追加する範囲を指定
+
+append_Sneaker_count_data = Sneaker_worksheet.update(range_notation, [Sneaker_count_data_with_date])
+return append_Sneaker_count_data
