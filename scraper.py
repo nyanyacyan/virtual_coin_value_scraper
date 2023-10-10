@@ -1,11 +1,13 @@
 from selenium import webdriver  # seleniumのバージョンを4.1にする
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager  # Chromeのバージョンをオートで確認してくれてインストールしてくれる
 import re
 # import pandas as pd
 
 url = "https://stepn-market.guide/market/dashboard"
 
-driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service)
 
 # URLを開く
 driver.get(url)
@@ -55,22 +57,22 @@ Scroll_count_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cl
 
 
 # デバック用
-print (f'Sneaker_data:{Sneaker_data}')
+# print (f'Sneaker_data:{Sneaker_data}')
 print (f'Sneaker_rainbow_data:{Sneaker_rainbow_data}')
-print (f'Sneaker_count_data:{Sneaker_count_data}')
-print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
+# print (f'Sneaker_count_data:{Sneaker_count_data}')
+# print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
 
-print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
-print (f'Gems_lv6_data:{Gems_lv6_data}')
-print (f'Gems_lv7_data:{Gems_lv7_data}')
-print (f'Gems_lv8_E_L_data:{Gems_lv8_E_L_data}')
-print (f'Gems_lv8_Resilience_data:{Gems_lv8_Resilience_data}')
-print (f'Gems_lv9_Resilience_data:{Gems_lv9_Resilience_data}')
+# print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
+# print (f'Gems_lv6_data:{Gems_lv6_data}')
+# print (f'Gems_lv7_data:{Gems_lv7_data}')
+# print (f'Gems_lv8_E_L_data:{Gems_lv8_E_L_data}')
+# print (f'Gems_lv8_Resilience_data:{Gems_lv8_Resilience_data}')
+# print (f'Gems_lv9_Resilience_data:{Gems_lv9_Resilience_data}')
 
-print (f'Gems_count_data:{Gems_count_data}')
-print (f'Gems_count_lv7_data:{Gems_count_lv7_data}')
-print (f'Gems_count_lv8_data:{Gems_count_lv8_data}')
-print (f'Gems_count_lv9_data:{Gems_count_lv9_data}')
+# print (f'Gems_count_data:{Gems_count_data}')
+# print (f'Gems_count_lv7_data:{Gems_count_lv7_data}')
+# print (f'Gems_count_lv8_data:{Gems_count_lv8_data}')
+# print (f'Gems_count_lv9_data:{Gems_count_lv9_data}')
 
-print (f'Scroll_data:{Scroll_data}')
-print (f'Scroll_count_data:{Scroll_count_data}')
+# print (f'Scroll_data:{Scroll_data}')
+# print (f'Scroll_count_data:{Scroll_count_data}')
