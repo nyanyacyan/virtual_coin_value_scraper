@@ -22,7 +22,6 @@ Scroll_worksheet = gs.open_by_key(spreadsheet_key).worksheet("Scroll")
 current_date = datetime.datetime.now().strftime('%Y/%m/%d')
 
 
-
 # 各データに日付をに追加して変数化
 Sneaker_data_with_date = [current_date] + scraper.Sneaker_data
 Sneaker_count_data_with_date = [current_date] + scraper.Sneaker_count_data
@@ -55,7 +54,21 @@ def append_Sneaker_rainbow_data():
     return append_Sneaker_rainbow_data
 
 
-# sneaker_count_data
+# Sneaker_None_data   リストでの入力
+def append_Sneaker_None_data():
+    Sneaker_column_data = Sneaker_worksheet.col_values(18)
+
+    last_row = len(Sneaker_column_data)
+    print(last_row)
+
+    range_notation = f'R{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Sneaker_None_data = Sneaker_worksheet.update(range_notation, [scraper.Sneaker_None_data])
+    return append_Sneaker_None_data
+
+
+# Sneaker_count_data
 def append_Sneaker_count_data():
     Sneaker_column_data = Sneaker_worksheet.col_values(23)  # W列の最終行を見つける
 
@@ -68,6 +81,19 @@ def append_Sneaker_count_data():
     return append_Sneaker_count_data
 
 
+# Sneaker_count_None_data   リストでの入力
+def append_Sneaker_count_None_data():
+    Sneaker_count_column_data = Sneaker_worksheet.col_values(40)
+
+    last_row = len(Sneaker_count_column_data)
+    print(last_row)
+
+    range_notation = f'AN{last_row + 1}'
+
+    append_Sneaker_count_None_data = Sneaker_worksheet.update(range_notation, [scraper.Sneaker_count_None_data])
+    return append_Sneaker_count_None_data
+
+
 # Sneaker_count_rainbow_data
 # AQ列43
 def append_Sneaker_count_rainbow_data():
@@ -78,7 +104,7 @@ def append_Sneaker_count_rainbow_data():
     return append_Sneaker_rainbow_data
 
 
-# gems_data
+# Gems_data
 # gspreadは１から始まる
 def append_gems_data():
     Gems_column_data = Gems_worksheet.col_values(1) # A列の最終行を見つける
@@ -90,6 +116,33 @@ def append_gems_data():
     # updateメソッドを使ってデータを書き込む
     append_Gems_data = Gems_worksheet.update(range_notation, [Gems_data_with_date])
     return append_Gems_data
+
+
+# Gems_None_data
+# Gems_lv6_Rainbow_None_data  単体
+
+
+
+# Gems_lv7_Rainbow_None_data  単体
+
+
+
+# Gems_lv8_Comfort_None_data  単体
+
+
+
+# Gems_lv8_Rainbow_None_data  単体
+
+
+
+# Gems_lv9_R_E_None_data  リスト
+
+
+
+# Gems_lv9_Rainbow_None_data  単体
+
+
+
 
 
 # Gems_lv6_data
@@ -205,6 +258,20 @@ def append_gems_lv9_data():
     # updateメソッドを使ってデータを書き込む
     append_Gems_count_lv9_data = Gems_worksheet.update(range_notation, [scraper.Gems_count_lv9_data])
     return append_Gems_count_lv9_data
+
+
+# Gems_count_None_data
+# Gems_count_lv7_Rainbow_None_data  単体
+
+
+
+# Gems_count_lv8_Rainbow_None_data  単体
+
+
+
+# Gems_count_lv9_Rainbow_None_data  単体
+
+
 
 
 # Scroll_data
