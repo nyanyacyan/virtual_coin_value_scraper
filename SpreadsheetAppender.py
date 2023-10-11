@@ -59,7 +59,6 @@ def append_Sneaker_None_data():
     Sneaker_column_data = Sneaker_worksheet.col_values(18)
 
     last_row = len(Sneaker_column_data)
-    print(last_row)
 
     range_notation = f'R{last_row + 1}'
 
@@ -86,7 +85,6 @@ def append_Sneaker_count_None_data():
     Sneaker_count_column_data = Sneaker_worksheet.col_values(40)
 
     last_row = len(Sneaker_count_column_data)
-    print(last_row)
 
     range_notation = f'AN{last_row + 1}'
 
@@ -136,7 +134,15 @@ def append_gems_data():
 
 
 # Gems_lv9_R_E_None_data  リスト
+def Gems_lv9_R_E_None_data():
+    Gems_None_data = Gems_worksheet.col_values(42)
 
+    last_row = len(Gems_None_data)
+
+    range_notation = f'AP{last_row + 1}'
+
+    Gems_worksheet.update(range_notation, [scraper.Gems_lv9_R_E_None_data])
+    return Gems_lv9_R_E_None_data
 
 
 # Gems_lv9_Rainbow_None_data  単体
@@ -150,7 +156,6 @@ def append_gems_lv6_data():
     Gems_column_data = Gems_worksheet.col_values(27)
 
     last_row = len(Gems_column_data)
-    print(last_row)
 
     range_notation = f'AA{last_row + 1}'
 
@@ -163,7 +168,6 @@ def append_gems_lv7_data():
     Gems_column_data = Gems_worksheet.col_values(31)
 
     last_row = len(Gems_column_data)
-    print(last_row)
 
     range_notation = f'AF{last_row + 1}'
 
@@ -177,7 +181,6 @@ def append_gems_lv8_E_L_data():
     Gems_column_data = Gems_worksheet.col_values(37)
 
     last_row = len(Gems_column_data)
-    print(last_row)
 
     range_notation = f'AK{last_row + 1}'
 
