@@ -23,18 +23,6 @@ current_date = datetime.datetime.now().strftime('%Y/%m/%d')
 
 
 
-# Sneaker_count_rainbow_data
-
-# Gems_lv6_data
-# Gems_lv7_data
-# Gems_lv8_E_L_data
-# Gems_lv8_Resilience_data
-# Gems_lv9_Resilience_data
-
-# Gems_count_lv7_data
-# Gems_count_lv8_data
-# Gems_count_lv9_data
-
 # 各データに日付をに追加して変数化
 Sneaker_data_with_date = [current_date] + scraper.Sneaker_data
 Sneaker_count_data_with_date = [current_date] + scraper.Sneaker_count_data
@@ -57,8 +45,9 @@ def append_Sneaker_data():
     return append_Sneaker_data
 
 
+# Sneaker_rainbow_data
 # U列は21列目   セル単体での追加
-def Sneaker_rainbow_data():
+def append_Sneaker_rainbow_data():
     Sneaker_U_column = Sneaker_worksheet.col_values(21)  # 21はU列
     last_row = len(Sneaker_U_column)
 
@@ -79,30 +68,143 @@ def append_Sneaker_count_data():
     return append_Sneaker_count_data
 
 
+# Sneaker_count_rainbow_data
+# AQ列43
+def append_Sneaker_count_rainbow_data():
+    Sneaker_AQ_column = Sneaker_worksheet.col_values(43)  
+    last_row = len(Sneaker_AQ_column)
+
+    append_Sneaker_rainbow_data = Sneaker_worksheet.update_cell(last_row + 1, 43, scraper.Sneaker_rainbow_data)
+    return append_Sneaker_rainbow_data
+
+
 # gems_data
 # gspreadは１から始まる
 def append_gems_data():
-    Gems_column_data = Gems_worksheet.col_values(1)
+    Gems_column_data = Gems_worksheet.col_values(1) # A列の最終行を見つける
 
-    # Aの空白
-    A_empty_row = len(Gems_column_data) + 1
+    last_row = len(Gems_column_data)
 
-    # 空白のセルにデータを追加
-    range_to_write = f'A{A_empty_row}'
-    append_Gems_data = Gems_worksheet.update(range_to_write, [Gems_data_with_date])
+    range_notation = f'A{last_row + 1}' # 空白のセルにデータを追加する範囲を指定
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_data = Gems_worksheet.update(range_notation, [Gems_data_with_date])
     return append_Gems_data
+
+
+# Gems_lv6_data
+def append_gems_lv6_data():
+    Gems_column_data = Gems_worksheet.col_values(27)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'AA{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_lv6_data = Gems_worksheet.update(range_notation, [scraper.Gems_lv6_data])
+    return append_Gems_lv6_data
+
+# Gems_lv7_data
+def append_gems_lv7_data():
+    Gems_column_data = Gems_worksheet.col_values(31)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'AF{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_lv7_data = Gems_worksheet.update(range_notation, [scraper.Gems_lv7_data])
+    return append_Gems_lv7_data
+
+
+# Gems_lv8_E_L_data
+def append_gems_lv8_E_L_data():
+    Gems_column_data = Gems_worksheet.col_values(37)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'AK{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_lv8_E_L_data = Gems_worksheet.update(range_notation, [scraper.Gems_lv8_E_L_data])
+    return append_Gems_lv8_E_L_data
+
+
+# Gems_lv8_Resilience_data  単体
+def append_gems_lv8_Resilience_data():
+    Gems_AN_column = Gems_worksheet.col_values(40)
+    last_row = len(Gems_AN_column)
+
+    append_gems_lv8_Resilience_data = Gems_worksheet.update_cell(last_row + 1, 40, scraper.Gems_lv8_Resilience_data)
+    return append_gems_lv8_Resilience_data
+
+
+# Gems_lv9_Resilience_data  単体
+def append_gems_lv9_Resilience_data():
+    Gems_AS_column = Gems_worksheet.col_values(45)
+    last_row = len(Gems_AS_column)
+
+    append_gems_lv9_Resilience_data = Gems_worksheet.update_cell(last_row + 1, 45, scraper.Gems_lv9_Resilience_data)
+    return append_gems_lv9_Resilience_data
+
 
 # Gems_count_data
 def append_Gems_count_data():
-    Gems_column_data = Gems_worksheet.col_values(47)
+    Gems_column_data = Gems_worksheet.col_values(48)
 
-    # Wの空白
-    AV_empty_row = len(Gems_column_data) + 1
+    last_row = len(Gems_column_data)
+    print(last_row)
 
-    # 空白のセルにデータを追加
-    range_to_write = f'AV{AV_empty_row}'
-    append_Gems_count_data = Gems_worksheet.update(range_to_write, [Gems_count_data_with_date])
+    range_notation = f'AV{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_count_data = Gems_worksheet.update(range_notation, [Gems_count_data_with_date])
     return append_Gems_count_data
+
+
+# Gems_count_lv7_data
+def append_gems_lv7_data():
+    Gems_column_data = Gems_worksheet.col_values(79)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'CA{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_count_lv7_data = Gems_worksheet.update(range_notation, [scraper.Gems_count_lv7_data])
+    return append_Gems_count_lv7_data
+
+
+# Gems_count_lv8_data
+def append_gems_lv8_data():
+    Gems_column_data = Gems_worksheet.col_values(84)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'CF{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_count_lv8_data = Gems_worksheet.update(range_notation, [scraper.Gems_count_lv8_data])
+    return append_Gems_count_lv8_data
+
+
+# Gems_count_lv9_data
+def append_gems_lv9_data():
+    Gems_column_data = Gems_worksheet.col_values(89)
+
+    last_row = len(Gems_column_data)
+    print(last_row)
+
+    range_notation = f'CK{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Gems_count_lv9_data = Gems_worksheet.update(range_notation, [scraper.Gems_count_lv9_data])
+    return append_Gems_count_lv9_data
 
 
 # Scroll_data
@@ -110,22 +212,26 @@ def append_Gems_count_data():
 def append_Scroll_data():
     Scroll_column_data = Scroll_worksheet.col_values(1)
 
-    # Aの空白
-    A_empty_row = len(Scroll_column_data) + 1
+    last_row = len(Scroll_column_data)
+    print(last_row)
 
-    # 空白のセルにデータを追加
-    range_to_write = f'A{A_empty_row}'
-    append_Scroll_data = Scroll_worksheet.update(range_to_write, [Scroll_data_with_date])
+    range_notation = f'A{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Scroll_data = Scroll_worksheet.update(range_notation, [Scroll_data_with_date])
     return append_Scroll_data
 
 # Scroll_count_data
 def append_Scroll_count_data():
     Scroll_column_data = Scroll_worksheet.col_values(8)
 
-    # Wの空白
-    H_empty_row = len(Scroll_column_data) + 1
+    last_row = len(Scroll_column_data)
+    print(last_row)
 
-    # 空白のセルにデータを追加
-    range_to_write = f'H{H_empty_row}'
-    append_Scroll_count_data = Gems_worksheet.update(range_to_write, [Scroll_count_data_with_date])
+    range_notation = f'H{last_row + 1}'
+
+    # updateメソッドを使ってデータを書き込む
+    append_Scroll_count_data = Scroll_worksheet.update(range_notation, [Scroll_count_data_with_date])
     return append_Scroll_count_data
+
+# 空白には０を入力

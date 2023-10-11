@@ -60,7 +60,7 @@ Scroll_count_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cl
 # print (f'Sneaker_data:{Sneaker_data}')
 # print (f'Sneaker_rainbow_data:{Sneaker_rainbow_data}')
 # print (f'Sneaker_count_data:{Sneaker_count_data}')
-# print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
+print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
 
 # print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
 # print (f'Gems_lv6_data:{Gems_lv6_data}')
