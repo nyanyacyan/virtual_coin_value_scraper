@@ -30,16 +30,20 @@ Gems_count_data_with_date = [current_date] + scraper.Gems_count_data
 Scroll_data_with_date = [current_date] + scraper.Scroll_data
 Scroll_count_data_with_date = [current_date] + scraper.Scroll_count_data
 
-print(type(Sneaker_data_with_date))
-print(Sneaker_data_with_date)
+
+# リスト検証
+Gems_column_data = Gems_worksheet.col_values(1) # A列の最終行を見つける
+
+last_row = len(Gems_column_data)
+
+range_notation = f'A{last_row + 1}' # 空白のセルにデータを追加する範囲を指定
+
+# updateメソッドを使ってデータを書き込む
+append_Gems_data = Gems_worksheet.update(range_notation, [Gems_data_with_date])
 
 
-Sneaker_column_data = Sneaker_worksheet.col_values(23)  # W列の最終行を見つける
+# 単体検証
+# Gems_AE_column = Gems_worksheet.col_values(31)
+# last_row = len(Gems_AE_column)
 
-last_row = len(Sneaker_column_data)
-
-
-range_notation = f'W{last_row + 1}'  # 空白のセルにデータを追加する範囲を指定
-
-append_Sneaker_count_data = Sneaker_worksheet.update(range_notation, [Sneaker_count_data_with_date])
-return append_Sneaker_count_data
+# Gems_worksheet.update_cell(last_row + 1, 31, scraper.Gems_lv6_Rainbow_None_data)
