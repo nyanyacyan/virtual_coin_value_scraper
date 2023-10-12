@@ -118,19 +118,39 @@ def append_gems_data():
 
 # Gems_None_data
 # Gems_lv6_Rainbow_None_data  単体
+def append_gems_data():
+    Gems_AE_column = Gems_worksheet.col_values(31)
+    last_row = len(Gems_AE_column)
+
+    append_lv6_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 31, scraper.Gems_lv6_Rainbow_None_data)
+    return append_lv6_Rainbow_None_Gems_data
 
 
+# Gems_lv7_Rainbow_None_data  AJ単体
+def append_lv7_Rainbow_None_gems_data():
+    Gems_AJ_column = Gems_worksheet.col_values(36)
+    last_row = len(Gems_AJ_column)
 
-# Gems_lv7_Rainbow_None_data  単体
+    append_lv7_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 36, scraper.Gems_lv7_Rainbow_None_data)
+    return append_lv7_Rainbow_None_Gems_data
 
 
+# Gems_lv8_Comfort_None_data  AM単体
+def append_lv8_Comfort_None_gems_data():
+    Gems_AJ_column = Gems_worksheet.col_values(39)
+    last_row = len(Gems_AJ_column)
 
-# Gems_lv8_Comfort_None_data  単体
+    append_lv8_Comfort_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 39, scraper.Gems_lv8_Comfort_None_data)
+    return append_lv8_Comfort_None_Gems_data
 
 
+# Gems_lv8_Rainbow_None_data  AO単体
+def append_lv8_Rainbow_None_gems_data():
+    Gems_AO_column = Gems_worksheet.col_values(41)
+    last_row = len(Gems_AO_column)
 
-# Gems_lv8_Rainbow_None_data  単体
-
+    append_lv8_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 41, scraper.Gems_lv8_Rainbow_None_data)
+    return append_lv8_Rainbow_None_Gems_data
 
 
 # Gems_lv9_R_E_None_data  リスト
@@ -146,8 +166,12 @@ def Gems_lv9_R_E_None_data():
 
 
 # Gems_lv9_Rainbow_None_data  単体
+def append_lv9_Rainbow_None_gems_data():
+    Gems_AT_column = Gems_worksheet.col_values(46)
+    last_row = len(Gems_AT_column)
 
-
+    append_lv9_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 46, scraper.Gems_lv9_Rainbow_None_data)
+    return append_lv9_Rainbow_None_Gems_data
 
 
 
@@ -265,15 +289,30 @@ def append_gems_lv9_data():
 
 # Gems_count_None_data
 # Gems_count_lv7_Rainbow_None_data  単体
+def append_count_lv7_Rainbow_None_gems_data():
+    Gems_CE_column = Gems_worksheet.col_values(83)
+    last_row = len(Gems_CE_column)
 
+    append_count_lv7_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 83, scraper.Gems_count_lv7_Rainbow_None_data)
+    return append_count_lv7_Rainbow_None_Gems_data
 
 
 # Gems_count_lv8_Rainbow_None_data  単体
+def append_count_lv8_Rainbow_None_gems_data():
+    Gems_CJ_column = Gems_worksheet.col_values(88)
+    last_row = len(Gems_CJ_column)
 
+    append_count_lv8_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 88, scraper.Gems_count_lv7_Rainbow_None_data)
+    return append_count_lv8_Rainbow_None_Gems_data
 
 
 # Gems_count_lv9_Rainbow_None_data  単体
+def append_count_lv9_Rainbow_None_gems_data():
+    Gems_CO_column = Gems_worksheet.col_values(93)
+    last_row = len(Gems_CO_column)
 
+    append_count_lv9_Rainbow_None_Gems_data = Gems_worksheet.update_cell(last_row + 1, 93, scraper.Gems_count_lv9_Rainbow_None_data)
+    return append_count_lv9_Rainbow_None_Gems_data
 
 
 
