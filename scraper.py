@@ -51,7 +51,12 @@ Scroll_data = [cleaned_list[113], cleaned_list[115], cleaned_list[117], cleaned_
 Scroll_count_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122]]
 
 def zero_replace(element):
-    return element.replace('-', '0')
+    element = element.replace('-', '0')
+    try:
+        return int(element)
+    except ValueError:
+        print(f"数値ではないものが入力されてます:{element}の部分システム構築の修正が必要です。")
+        return None
 
 # すべての<td>要素を抽出
 all_tdtag_list = [td_tag.text for td_tag in driver.find_elements_by_tag_name('td')]
@@ -61,7 +66,7 @@ tdtag_0_replace = [zero_replace(element) for element in all_tdtag_list]
 
 Sneaker_None_data = tdtag_0_replace[21:24]
 Sneaker_count_None_data = tdtag_0_replace[46:49]
-
+print(Sneaker_None_data)
 Gems_lv6_Rainbow_None_data = tdtag_0_replace[85]
 Gems_lv7_Rainbow_None_data = tdtag_0_replace[91]
 Gems_lv8_Comfort_None_data = tdtag_0_replace[95]
