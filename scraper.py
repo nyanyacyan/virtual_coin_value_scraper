@@ -85,7 +85,7 @@ Gems_count_lv9_Rainbow_None_data = tdtag_0_replace[157]
 # print (f'Sneaker_count_data:{Sneaker_count_data}')
 # print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
 
-# print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
+print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
 # print (f'Gems_lv6_data:{Gems_lv6_data}')
 # print (f'Gems_lv7_data:{Gems_lv7_data}')
 # print (f'Gems_lv8_E_L_data:{Gems_lv8_E_L_data}')
