@@ -22,8 +22,8 @@ for /R"%DESKTOP_DIR%"%%i in (requirements.txt)do(
 
 @REM パイソンのインストール wait!はｲﾝｽﾄｰﾙが終わるまで実行をｽﾄｯﾌﾟ。quietはｻｲﾚﾝﾄﾓｰﾄﾞ（GUIなし）で実行
 @REM InstallAllUsers=1 と PrependPath=1 すべてのユーザーのためにPythonをインストールPythonをシステムのPATHに追加
-if defined PYTHON_INSTALLER(
-    start /wait!PYTHON_INSTALLER! /quiet InstallAllUser=1 PrependPath=1
+if defined PYTHON_INSTALLER (
+    start /wait !PYTHON_INSTALLER! /quiet InstallAllUser=1 PrependPath=1
 )else(
     echo python-3.10.8-amd64.exe が見つかりません。.
     exit /b
@@ -46,8 +46,8 @@ if defined REQUIREMENTS_FILE (
 
 REM タスクスケジューラにタスクを追加
 REM 両方のファイルが見つかった場合、タスクスケジューラにタスクを追加
-if defined PYTHON_PATH if defined MAIN_PY_PATH (
-    schtasks /create /tn "RunMainPy" /tr "!PYTHON_PATH! !MAIN_PY_PATH!" /sc daily /st 06:00
+if defined PYTHON_INSTALLER if defined MAIN_PY_PATH (
+    schtasks /create /tn "RunMainPy" /tr "!PYTHON_INSTALLER! !MAIN_PY_PATH!" /sc daily /st 06:00
 ) else (
     echo python.exe or main.py not found on Desktop.
     exit /b
