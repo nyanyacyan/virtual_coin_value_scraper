@@ -8,13 +8,13 @@ setlocal enabledelayedexpansion
 set DESKTOP_DIR=%USERPROFILE%\Desktop
 
 
-@REM exeファイルの場所を探す。  見つかった場合、そのファイルのフルパスPYTHON_INSTALLERという変数に定義してる
+@REM exeファイルの場所を探す。  見つかった場合、そのファイルのフルパスPYTHON_INSTALLERという変数に定義
 for /R"%DESKTOP_DIR%"%%i in (python-3.10.8-amd64.exe)do(
     set PYTHON_INSTALLER=%%i
 )
 
 
-@REM requirements.txtの場所を探す  見つかった場合、そのファイルのフルパスREQUIREMENTS_FILEという変数に定義してる
+@REM requirements.txtの場所を探す  見つかった場合、そのファイルのフルパスをREQUIREMENTS_FILEという変数に定義
 for /R"%DESKTOP_DIR%"%%i in (requirements.txt)do(
     set REQUIREMENTS_FILE=%%i
 )
@@ -30,7 +30,7 @@ if defined PYTHON_INSTALLER(
 )
 
 
-REM main.pyの場所を探す
+@REM main.pyファイルの場所を探す。  見つかった場合、そのファイルのフルパスをMAIN_PY_PATHという変数に定義
 for /R "%DESKTOP_DIR%" %%i in (main.py) do (
     set MAIN_PY_PATH=%%i
 )
