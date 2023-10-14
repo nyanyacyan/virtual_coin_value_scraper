@@ -79,31 +79,5 @@ Gems_count_lv8_Rainbow_None_data = tdtag_0_replace[151]
 Gems_count_lv9_Rainbow_None_data = tdtag_0_replace[157]
 
 
-# df = pd.DataFrame(all_tdtag_list, columns=['Value'])
-
-# # CSVファイルとして保存
-# df.to_csv('output.csv', index=False)
-
-# デバック用
-# print (f'Sneaker_data:{Sneaker_data}')
-# print (f'Sneaker_rainbow_data:{Sneaker_rainbow_data}')
-# print (f'Sneaker_count_data:{Sneaker_count_data}')
-# print (f'Sneaker_count_rainbow_data:{Sneaker_count_rainbow_data}')
-
-print (f'Gems_lv1_lv5_data:{Gems_lv1_lv5_data}')
-# print (f'Gems_lv6_data:{Gems_lv6_data}')
-# print (f'Gems_lv7_data:{Gems_lv7_data}')
-# print (f'Gems_lv8_E_L_data:{Gems_lv8_E_L_data}')
-# print (f'Gems_lv8_Resilience_data:{Gems_lv8_Resilience_data}')
-# print (f'Gems_lv9_Resilience_data:{Gems_lv9_Resilience_data}')
-
-# print (f'Gems_count_data:{Gems_count_data}')
-# print (f'Gems_count_lv7_data:{Gems_count_lv7_data}')
-# print (f'Gems_count_lv8_data:{Gems_count_lv8_data}')
-# print (f'Gems_count_lv9_data:{Gems_count_lv9_data}')
-
-# print (f'Scroll_data:{Scroll_data}')
-# print (f'Scroll_count_data:{Scroll_count_data}')
-
 # WebDriverを閉じる
 driver.quit()
