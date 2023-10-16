@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager  # Chromeのバージョンをオートで確認してくれてインストールしてくれる
 import re
-# import pandas as pd
+import pandas as pd
 
 url = "https://stepn-market.guide/market/dashboard"
 
@@ -61,22 +61,20 @@ def zero_replace(element):
 # すべての<td>要素を抽出
 all_tdtag_list = [td_tag.text for td_tag in driver.find_elements_by_tag_name('td')]
 
-# -を０に置換
-tdtag_0_replace = [zero_replace(element) for element in all_tdtag_list]
 
-Sneaker_None_data = tdtag_0_replace[21:24]
-Sneaker_count_None_data = tdtag_0_replace[46:49]
-print(Sneaker_None_data)
-Gems_lv6_Rainbow_None_data = tdtag_0_replace[85]
-Gems_lv7_Rainbow_None_data = tdtag_0_replace[91]
-Gems_lv8_Comfort_None_data = tdtag_0_replace[95]
-Gems_lv8_Rainbow_None_data = tdtag_0_replace[97]
-Gems_lv9_R_E_None_data = tdtag_0_replace[99:102]
-Gems_lv9_Rainbow_None_data = tdtag_0_replace[103]
+Sneaker_None_data = [zero_replace(element) for element in all_tdtag_list[21:24]]
+Sneaker_count_None_data = [zero_replace(element) for element in all_tdtag_list[46:49]]
 
-Gems_count_lv7_Rainbow_None_data = tdtag_0_replace[145]
-Gems_count_lv8_Rainbow_None_data = tdtag_0_replace[151]
-Gems_count_lv9_Rainbow_None_data = tdtag_0_replace[157]
+Gems_lv6_Rainbow_None_data = zero_replace(all_tdtag_list[85])
+Gems_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[91])
+Gems_lv8_Comfort_None_data = zero_replace(all_tdtag_list[95])
+Gems_lv8_Rainbow_None_data = zero_replace(all_tdtag_list[97])
+Gems_lv9_R_E_None_data = [zero_replace(element) for element in all_tdtag_list[99:102]]
+Gems_lv9_Rainbow_None_data = zero_replace(all_tdtag_list[103])
+
+Gems_count_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[145])
+Gems_count_lv8_Rainbow_None_data = zero_replace(all_tdtag_list[151])
+Gems_count_lv9_Rainbow_None_data = zero_replace(all_tdtag_list[157])
 
 
 # WebDriverを閉じる

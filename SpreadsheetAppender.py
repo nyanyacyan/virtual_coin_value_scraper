@@ -4,7 +4,7 @@ import scraper
 import datetime
 
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-service_account_file = 'gspread-401409-7403b643eb80.json'
+service_account_file = 'stepn-402203-897f5f432443.json'
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(service_account_file, scopes)
 
