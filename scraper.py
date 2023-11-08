@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager  # Chromeのバージョンをオートで確認してくれてインストールしてくれる
 import re
 import pandas as pd
+import csv
 
 url = "https://stepn-market.guide/market/dashboard"
 
@@ -23,10 +24,13 @@ def clean_and_convert(item):
         return None
 
 # <b>タグのテキストを取得
-all_btag_list = [b_tag.text for b_tag in driver.find_elements_by_tag_name('b')]
+all_btag_list = [b_tag.text for b_tag in driver.find_elements(By.TAG_NAME, 'b')]
 
 cleaned_list = [clean_and_convert(item) for item in all_btag_list]
-
+with open('output.csv', 'w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    for item in cleaned_list:
+        writer.writerow([item])
 
 # それぞれの範囲から抽出
 Sneaker_data = cleaned_list[:16]
@@ -47,8 +51,9 @@ Gems_count_lv7_data = cleaned_list[101:105]
 Gems_count_lv8_data = cleaned_list[105:109]
 Gems_count_lv9_data = cleaned_list[109:113]
 
-Scroll_data = [cleaned_list[113], cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121]]
-Scroll_count_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122]]
+Scroll_data = [cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121], cleaned_list[123]]
+Scroll_count_data = [cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122], cleaned_list[124]]
+print(Scroll_count_data)
 
 def zero_replace(element):
     element = element.replace('-', '0')
@@ -59,7 +64,7 @@ def zero_replace(element):
         return None
 
 # すべての<td>要素を抽出
-all_tdtag_list = [td_tag.text for td_tag in driver.find_elements_by_tag_name('td')]
+all_tdtag_list = [td_tag.text for td_tag in driver.find_elements(By.TAG_NAME, 'td')]
 
 
 Sneaker_None_data = [zero_replace(element) for element in all_tdtag_list[21:24]]
