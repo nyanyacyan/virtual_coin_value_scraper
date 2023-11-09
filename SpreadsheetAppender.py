@@ -1,7 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import scraper
-import datetime
 
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 service_account_file = 'stepn-402203-897f5f432443.json'
@@ -16,7 +15,7 @@ spreadsheet_key = '1wGhuvB2Gs1btoq2DJlkdMlCixdvZdEazvYyOQm2T6EE'
 Sneaker_worksheet = gs.open_by_key(spreadsheet_key).worksheet("Sneaker")
 Gems_worksheet = gs.open_by_key(spreadsheet_key).worksheet("Gems")
 Scroll_worksheet = gs.open_by_key(spreadsheet_key).worksheet("Scroll")
-
+all_list_worksheet = gs.open_by_key(spreadsheet_key).worksheet("all_list")
 
 # 現在の日付を YYYY-MM-DD 形式で取得
 current_date = datetime.datetime.now().strftime('%Y/%m/%d')
@@ -116,7 +115,7 @@ def append_Sneaker_count_rainbow_data():
     Sneaker_AQ_column = Sneaker_worksheet.col_values(43)  
     last_row = len(Sneaker_AQ_column)
 
-    append_Sneaker_rainbow_data = Sneaker_worksheet.update_cell(last_row + 1, 43, scraper.Sneaker_rainbow_data)
+    append_Sneaker_rainbow_data = Sneaker_worksheet.update_cell(last_row + 1, 43, scraper.Sneaker_count_rainbow_data)
     return append_Sneaker_rainbow_data
 
 
@@ -393,3 +392,13 @@ def append_Scroll_count_data():
     # updateメソッドを使ってデータを書き込む
     append_Scroll_count_data = Scroll_worksheet.update(range_notation, [Scroll_count_data_with_date])
     return append_Scroll_count_data
+
+
+# スプレッドシートの 'E2' セルから始めて cleaned_list のデータを縦に書き込む
+# cleaned_list の各アイテムを小数点一桁までにフォーマット
+formatted_values = [[format(item, '.1f')] for item in scraper.cleaned_list]
+
+# スプレッドシートの 'E2' セルから始めてフォーマットされたデータを縦に書き込む
+all_list_worksheet.update('E2', formatted_values)
+
+

@@ -29,8 +29,8 @@ all_btag_list = [b_tag.text for b_tag in driver.find_elements(By.TAG_NAME, 'b')]
 cleaned_list = [clean_and_convert(item) for item in all_btag_list]
 with open('output.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
-    for item in cleaned_list:
-        writer.writerow([item])
+    for index, item in enumerate(cleaned_list, start=1):
+        writer.writerow([index, item])
 
 # それぞれの範囲から抽出
 Sneaker_data = cleaned_list[:16]
@@ -46,10 +46,10 @@ Gems_lv8_E_L_data = cleaned_list[67:69]
 Gems_lv8_Resilience_data = cleaned_list[69]
 Gems_lv9_Resilience_data = cleaned_list[70]
 
-Gems_count_data = cleaned_list[71:101]
-Gems_count_lv7_data = cleaned_list[101:105]
-Gems_count_lv8_data = cleaned_list[105:109]
-Gems_count_lv9_data = cleaned_list[109:113]
+Gems_count_data = cleaned_list[73:103]
+Gems_count_lv7_data = cleaned_list[103:107]
+Gems_count_lv8_data = cleaned_list[107:111]
+Gems_count_lv9_data = cleaned_list[111:115]
 
 Scroll_data = [cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121], cleaned_list[123]]
 Scroll_count_data = [cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122], cleaned_list[124]]
