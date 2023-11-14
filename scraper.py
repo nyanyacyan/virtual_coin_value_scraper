@@ -35,6 +35,7 @@ with open('output.csv', 'w', newline='', encoding='utf-8') as file:
 # それぞれの範囲から抽出
 Sneaker_data = cleaned_list[:16]
 Sneaker_rainbow_data = cleaned_list[16]
+print(Sneaker_rainbow_data)
 
 Sneaker_count_data = cleaned_list[17:33]
 Sneaker_count_rainbow_data = cleaned_list[33]
@@ -53,7 +54,6 @@ Gems_count_lv9_data = cleaned_list[111:115]
 
 Scroll_data = [cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121], cleaned_list[123]]
 Scroll_count_data = [cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122], cleaned_list[124]]
-print(Scroll_count_data)
 
 def zero_replace(element):
     element = element.replace('-', '0')

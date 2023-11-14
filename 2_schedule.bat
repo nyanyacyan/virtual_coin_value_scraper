@@ -1,4 +1,4 @@
 @echo off
-schtasks /create /tn "RunMainTask" /tr "%~dp03_main_test.bat" /sc daily /st 06:00
+schtasks /create /f /tn "RunMainTask" /tr "%~dp0\03_main_test.bat" /sc daily /st 12:00 /RL HIGHEST
 echo schedule complete
 pause
