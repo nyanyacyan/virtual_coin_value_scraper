@@ -33,6 +33,7 @@ with open('output.csv', 'w', newline='', encoding='utf-8') as file:
         writer.writerow([index, item])
 
 # それぞれの範囲から抽出
+# 更新する際にはここを更新→スプシ「all_list」を確認必要。
 Sneaker_data = cleaned_list[:16]
 Sneaker_rainbow_data = cleaned_list[16]
 print(Sneaker_rainbow_data)
