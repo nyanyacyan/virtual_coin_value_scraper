@@ -20,14 +20,14 @@ def clean_and_convert(item):
     try:
         return float(cleaned_item)
     except ValueError:
-        print(item)
+        # print(item)
         print(f'{item}を変換できません')
         return None
 
 # <b>タグのテキストを取得
 # if b_tag.textの部分で''部分（空の数値）を除外
 all_btag_list = [b_tag.text for b_tag in driver.find_elements(By.TAG_NAME, 'b') if b_tag.text]
-print(f"all_btag_list: {all_btag_list}")
+# print(f"all_btag_list: {all_btag_list}")
 
 cleaned_list = [clean_and_convert(item) for item in all_btag_list]
 with open('output.csv', 'w', newline='', encoding='utf-8') as file:
@@ -66,7 +66,7 @@ def zero_replace(element):
     try:
         return int(element)
     except ValueError:
-        print(f"数値ではないものが入力されてます:{element}の部分システム構築の修正が必要です。")
+        # print(f"数値ではないものが入力されてます:{element}の部分システム構築の修正が必要です。")
         return 0
 
 # すべての<td>要素を抽出
