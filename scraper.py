@@ -20,11 +20,14 @@ def clean_and_convert(item):
     try:
         return float(cleaned_item)
     except ValueError:
+        print(item)
         print(f'{item}を変換できません')
         return None
 
 # <b>タグのテキストを取得
-all_btag_list = [b_tag.text for b_tag in driver.find_elements(By.TAG_NAME, 'b')]
+# if b_tag.textの部分で''部分（空の数値）を除外
+all_btag_list = [b_tag.text for b_tag in driver.find_elements(By.TAG_NAME, 'b') if b_tag.text]
+print(f"all_btag_list: {all_btag_list}")
 
 cleaned_list = [clean_and_convert(item) for item in all_btag_list]
 with open('output.csv', 'w', newline='', encoding='utf-8') as file:
@@ -44,17 +47,19 @@ Sneaker_count_rainbow_data = cleaned_list[33]
 Gems_lv1_lv5_data = cleaned_list[34:59]
 Gems_lv6_data = cleaned_list[59:63]
 Gems_lv7_data = cleaned_list[63:67]
-Gems_lv8_E_L_data = cleaned_list[67:69]
+Gems_lv8_Luck_data = cleaned_list[67]
+Gems_lv8_Comfort_data = cleaned_list[68]
 Gems_lv8_Resilience_data = cleaned_list[69]
-Gems_lv9_Resilience_data = cleaned_list[70]
+Gems_lv9_Comfort_data = cleaned_list[70]
+Gems_lv9_Resilience_data = cleaned_list[71]
 
-Gems_count_data = cleaned_list[71:101]
-Gems_count_lv7_data = cleaned_list[101:105]
-Gems_count_lv8_data = cleaned_list[105:109]
-Gems_count_lv9_data = cleaned_list[109:113]
+Gems_count_data = cleaned_list[72:102]
+Gems_count_lv7_data = cleaned_list[102:106]
+Gems_count_lv8_data = cleaned_list[106:110]
+Gems_count_lv9_data = cleaned_list[110:114]
 
-Scroll_data = [cleaned_list[113], cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121]]
-Scroll_count_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122]]
+Scroll_data = [cleaned_list[114], cleaned_list[116], cleaned_list[118], cleaned_list[120], cleaned_list[122]]
+Scroll_count_data = [cleaned_list[115], cleaned_list[117], cleaned_list[119], cleaned_list[121], cleaned_list[123]]
 
 def zero_replace(element):
     element = element.replace('-', '0')
@@ -62,7 +67,7 @@ def zero_replace(element):
         return int(element)
     except ValueError:
         print(f"数値ではないものが入力されてます:{element}の部分システム構築の修正が必要です。")
-        return None
+        return 0
 
 # すべての<td>要素を抽出
 all_tdtag_list = [td_tag.text for td_tag in driver.find_elements(By.TAG_NAME, 'td')]
@@ -73,9 +78,10 @@ Sneaker_count_None_data = [zero_replace(element) for element in all_tdtag_list[4
 
 Gems_lv6_Rainbow_None_data = zero_replace(all_tdtag_list[85])
 Gems_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[91])
-Gems_lv8_Comfort_None_data = zero_replace(all_tdtag_list[95])
-Gems_lv8_Rainbow_None_data = zero_replace(all_tdtag_list[97])
-Gems_lv9_R_E_None_data = [zero_replace(element) for element in all_tdtag_list[99:102]]
+Gems_lv8_Efficiency_None_data = zero_replace(all_tdtag_list[92])
+Gems_lv8_Comfort_None_data = zero_replace(all_tdtag_list[94])
+Gems_lv8_Rainbow_None_data = zero_replace(all_tdtag_list[96])
+Gems_lv9_E_L_None_data = [zero_replace(element) for element in all_tdtag_list[99:101]]
 Gems_lv9_Rainbow_None_data = zero_replace(all_tdtag_list[103])
 
 Gems_count_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[145])
