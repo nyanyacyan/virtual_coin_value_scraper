@@ -248,6 +248,15 @@ def append_gems_lv8_Efficiency_None_data():
     return append_lv8_Efficiency_None_data
 
 
+# Gems_lv8_Comfort_None_data_data  AO単体
+def append_gems_lv8_Comfort_None_data():
+    Gems_AO_column = Gems_worksheet.col_values(39)
+    last_row = len(Gems_AO_column)
+
+    append_lv8_Comfort_None_data_Gems_data = Gems_worksheet.update_cell(last_row + 1, 39, scraper.Gems_lv8_Comfort_None_data)
+    return append_lv8_Comfort_None_data_Gems_data
+
+
 # Gems_lv8_Rainbow_None_data  AO単体
 def append_gems_lv8_Rainbow_None_data():
     Gems_AO_column = Gems_worksheet.col_values(41)
@@ -257,16 +266,16 @@ def append_gems_lv8_Rainbow_None_data():
     return append_lv8_Rainbow_None_Gems_data
 
 
-# Gems_lv9_E_L_None_data  リスト
-def append_Gems_lv9_E_L_None_data():
+# Gems_lv9_E_C_None_data  リスト
+def append_Gems_lv9_E_C_None_data():
     Gems_None_data = Gems_worksheet.col_values(42)
 
     last_row = len(Gems_None_data)
 
     range_notation = f'AP{last_row + 1}'
 
-    Gems_lv9_E_L_None_data = Gems_worksheet.update(range_notation, [scraper.Gems_lv9_E_L_None_data])
-    return Gems_lv9_E_L_None_data
+    Gems_lv9_E_C_None_data = Gems_worksheet.update(range_notation, [scraper.Gems_lv9_E_C_None_data])
+    return Gems_lv9_E_C_None_data
 
 
 # Gems_lv9_Rainbow_None_data  単体

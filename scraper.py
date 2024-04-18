@@ -39,7 +39,7 @@ with open('output.csv', 'w', newline='', encoding='utf-8') as file:
 # 更新する際にはここを更新→スプシ「all_list」を確認必要。
 Sneaker_data = cleaned_list[:16]
 Sneaker_rainbow_data = cleaned_list[16]
-print(Sneaker_rainbow_data)
+# print(Sneaker_rainbow_data)
 
 Sneaker_count_data = cleaned_list[17:33]
 Sneaker_count_rainbow_data = cleaned_list[33]
@@ -48,10 +48,10 @@ Gems_lv1_lv5_data = cleaned_list[34:59]
 Gems_lv6_data = cleaned_list[59:63]
 Gems_lv7_data = cleaned_list[63:67]
 Gems_lv8_Luck_data = cleaned_list[67]
-Gems_lv8_Comfort_data = cleaned_list[68]
-Gems_lv8_Resilience_data = cleaned_list[69]
-Gems_lv9_Comfort_data = cleaned_list[70]
-Gems_lv9_Resilience_data = cleaned_list[71]
+# Gems_lv8_Comfort_data = cleaned_list[68]
+Gems_lv8_Resilience_data = cleaned_list[68]
+# Gems_lv9_Comfort_data = cleaned_list[69]
+Gems_lv9_Resilience_data = cleaned_list[69]
 
 Gems_count_data = cleaned_list[72:102]
 Gems_count_lv7_data = cleaned_list[102:106]
@@ -81,7 +81,7 @@ Gems_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[91])
 Gems_lv8_Efficiency_None_data = zero_replace(all_tdtag_list[92])
 Gems_lv8_Comfort_None_data = zero_replace(all_tdtag_list[94])
 Gems_lv8_Rainbow_None_data = zero_replace(all_tdtag_list[96])
-Gems_lv9_E_L_None_data = [zero_replace(element) for element in all_tdtag_list[99:101]]
+Gems_lv9_E_C_None_data = [zero_replace(element) for element in all_tdtag_list[99:102]]
 Gems_lv9_Rainbow_None_data = zero_replace(all_tdtag_list[103])
 
 Gems_count_lv7_Rainbow_None_data = zero_replace(all_tdtag_list[145])
